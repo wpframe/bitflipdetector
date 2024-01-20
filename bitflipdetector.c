@@ -16,6 +16,7 @@ int main(){
     int flips = 0;
     int size = 1073741824;
     unsigned char *bytes = (unsigned char*)calloc(size, 1);
+    mlock(bytes, size);
     memset(bytes, 0, size);
     time_t t = time(NULL);
     printf("Program started at unix time %ld\n", t);
