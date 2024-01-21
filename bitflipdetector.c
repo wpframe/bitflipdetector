@@ -14,7 +14,6 @@ void interrupt_handler(int sig){
 
 int main(){
     int tests = 0;
-    int flips = 0;
     int size = 1073741824;
     unsigned char *bytes = (unsigned char*)calloc(size, 1);
     mlock(bytes, size);
@@ -23,8 +22,7 @@ int main(){
     signal(SIGINT, interrupt_handler);
     while(!interrupted){
         for(int i = 0; i < size; i++){
-            flips += bytes[i];
-            if(flips > 0){
+            if(bytes[i]> 0){
                 printf("Bit flip detected!\n");
                 printf("Unix time: %ld\n", t);
                 printf("Test number: %d\n", tests);
@@ -32,7 +30,6 @@ int main(){
             }
         }
         tests++;
-        flips = 0;
         sleep(1);
     }
     free(bytes);
