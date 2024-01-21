@@ -22,11 +22,12 @@ int main(){
     signal(SIGINT, interrupt_handler);
     while(!interrupted){
         for(int i = 0; i < size; i++){
-            if(bytes[i]> 0){
+            if(bytes[i] > 0){
                 printf("Bit flip detected!\n");
                 printf("Unix time: %ld\n", t);
                 printf("Test number: %d\n", tests);
                 printf("Position in byte array: %d/1073741824\n", i);
+                bytes[i] = 0;
             }
         }
         tests++;
