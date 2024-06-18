@@ -20,7 +20,7 @@ int main(){
     memset(bytes, 0, size);
     time_t t = time(NULL);
     pid_t pid = getpid();
-    printf("Program (%d) started at unix time %ld\n", pid, t);
+    printf("Program (PID %d) started at unix time %ld\n", pid, t);
     printf("Byte array located at %p\n", bytes);
     signal(SIGINT, interrupt_handler);
     while(!interrupted){
