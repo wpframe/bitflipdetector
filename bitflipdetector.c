@@ -19,7 +19,9 @@ int main(){
     mlock(bytes, size);
     memset(bytes, 0, size);
     time_t t = time(NULL);
-    printf("Program started at unix time %ld\n", t);
+    pid_t pid = getpid();
+    printf("Program (%d) started at unix time %ld\n", pid, t);
+    printf("Byte array located at %p\n", bytes);
     signal(SIGINT, interrupt_handler);
     while(!interrupted){
         for(int i = 0; i < size; i++){
